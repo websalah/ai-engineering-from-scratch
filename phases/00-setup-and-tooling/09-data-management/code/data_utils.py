@@ -1,11 +1,11 @@
+import hashlib
+import json
 import os
 import sys
-import json
-import hashlib
 from pathlib import Path
 
 try:
-    from datasets import load_dataset, Dataset
+    from datasets import Dataset, load_dataset
 except ImportError:
     print("Install the datasets library: pip install datasets")
     sys.exit(1)
@@ -159,10 +159,10 @@ if __name__ == "__main__":
     print("=" * 60)
 
     print("\n--- 1. Load and inspect a dataset ---")
-    ds = load_and_inspect("rotten_tomatoes", split="train")
+    ds = load_and_inspect("cornell-movie-review-data/rotten_tomatoes", split="train")
 
     print("\n--- 2. Stream a dataset ---")
-    rows = stream_dataset("rotten_tomatoes", max_rows=3)
+    rows = stream_dataset("cornell-movie-review-data/rotten_tomatoes", max_rows=3)
     for row in rows:
         print(f"  {row['text'][:80]}...")
 
